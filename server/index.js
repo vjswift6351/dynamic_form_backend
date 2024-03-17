@@ -16,4 +16,4 @@ app.listen(port, function(){
     console.log('Server running on localhost: ' + port);
 });
 
-// export default app;
+export default app;
