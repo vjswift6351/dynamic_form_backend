@@ -16,6 +16,7 @@ router.get('/getforms', async function(req, res, next){
 });
 
 router.post('/addforms', async function(req, res, next){
+    console.log('tetst',req.body.forms)
     let FormsModel = new formsModel();
     FormsModel.forms= req.body.forms
     const newForm =  await FormsModel.save();
@@ -28,7 +29,7 @@ router.delete('/deleteforms/:id', async function(req, res, next){
     res.status(200).json({'message':"Form Deleted","data":deleteform});
 });
 
-router.put('/updateforms', async function(req, res, next){
+router.put('/updateforms/:id', async function(req, res, next){
     let updateform = await formsModel.findOneAndUpdate({"_id": req.body.id} , {
         $set: {"forms": req.body.forms}
     },{new:true})
