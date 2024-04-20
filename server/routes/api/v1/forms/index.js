@@ -30,7 +30,7 @@ router.delete('/deleteforms/:id', async function(req, res, next){
 });
 
 router.put('/updateforms/:id', async function(req, res, next){
-    let updateform = await formsModel.findOneAndUpdate({"_id": req.body.id} , {
+    let updateform = await formsModel.findOneAndUpdate({"_id": req.params.id} , {
         $set: {"forms": req.body.forms}
     },{new:true})
     res.status(200).json({'message': "Form Updated","data": updateform});
